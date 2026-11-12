@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+</head>
+<body>
+<title>Una obra que siente (Apertura 1)</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Fredoka:wght@400;500;600;700&display=swap">
+<style>
+/* Aperturas del Taller: tema claro y alegre (papel crema con confeti, tarjetas blancas, colores vivos). Se comparte en la videoclase. */
+:root{
+  --bg:#FFF6E0; --board:#FFFFFF; --board2:#F5F2FF; --line:#E2DCF5;
+  --chalk:#2D2A4A; --muted:#6B6890; --ink:#2D2A4A;
+  --ia:#5B6CFF; --regla:#00A096; --no:#FF4F5E; --sun:#FFC23C; --coral:#FF6B5A; --violet:#8C6CF2; --sky:#3DA5F5; --pink:#FF7EB6;
+  --paper:#FFFDF5; --paperInk:#2D2A4A;
+  --display:"Fredoka","Arial Rounded MT Bold","Trebuchet MS",sans-serif;
+  --body:"Atkinson Hyperlegible","Segoe UI",Verdana,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{min-height:100%}
+body{margin:0;background-color:var(--bg);color:var(--chalk);font-family:var(--body);font-size:18px;line-height:1.45;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));padding-block:16px 40px;
+  background-image:
+   radial-gradient(circle at 12px 12px,#FF7EB655 5px,transparent 6px),
+   radial-gradient(circle at 70px 50px,#3DA5F555 5px,transparent 6px),
+   radial-gradient(circle at 120px 18px,#FFC23C77 6px,transparent 7px),
+   radial-gradient(circle at 40px 100px,#00A09644 5px,transparent 6px),
+   radial-gradient(circle at 150px 110px,#8C6CF244 5px,transparent 6px);
+  background-size:170px 140px}
+.wrap{max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,[tabindex]:focus-visible{outline:4px solid var(--violet);outline-offset:3px}
+h1,h2,h3{font-family:var(--display);font-weight:600;margin:0;text-wrap:balance}
+.top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}
+.brand svg{animation:wiggle 3s ease-in-out infinite}
+.brand h1{font-size:clamp(24px,4vw,38px);line-height:1.05;color:var(--chalk)}
+.brand small{display:block;font-family:var(--display);font-weight:500;color:var(--coral);font-size:16px;letter-spacing:.5px}
+.badges{display:flex;gap:6px;flex-wrap:wrap}
+.badge{width:36px;height:36px;border-radius:50%;border:3px dashed #CFC7EE;display:grid;place-items:center;font-family:var(--display);font-weight:600;font-size:15px;color:#B3AAD8;background:#fff}
+.badge.on{border:3px solid var(--sun);background:var(--sun);color:var(--ink);animation:pop .5s cubic-bezier(.2,1.6,.4,1) both}
+.board{background:var(--board);border:4px solid var(--chalk);border-radius:28px;padding:clamp(16px,3vw,32px);box-shadow:8px 10px 0 var(--sun)}
+.btn{background:#fff;color:var(--ink);border:3px solid var(--ink);border-radius:16px;padding:11px 20px;font-family:var(--display);font-weight:600;font-size:19px;box-shadow:0 5px 0 var(--ink);transition:transform .08s}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(4px);box-shadow:0 1px 0 var(--ink)}
+.btn.ghost{background:#fff;color:var(--muted);border:3px solid var(--line);box-shadow:none}
+.btn.go{background:var(--sun)}
+.btn[disabled]{opacity:.4;cursor:not-allowed;transform:none}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.spacer{flex:1}
+.muted{color:var(--muted)}
+/* map */
+.intro{display:grid;grid-template-columns:1fr;gap:6px}
+.intro p{margin:0;max-width:62ch;color:var(--muted)}
+.map{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.station{--c:var(--sky);background:#fff;border:4px solid var(--c);border-radius:22px;padding:16px;text-align:left;display:flex;flex-direction:column;gap:8px;min-height:180px;position:relative;box-shadow:0 7px 0 var(--c);transition:transform .15s}
+.station:hover{transform:translateY(-4px) rotate(-1deg)}
+.station .vc{align-self:flex-start;font-family:var(--display);font-weight:600;font-size:14px;color:#fff;background:var(--c);border-radius:999px;padding:3px 12px}
+.station h3{font-size:22px;line-height:1.15}
+.station p{margin:0;color:var(--muted);font-size:15px}
+.station .done{position:absolute;top:-12px;right:-8px;font-family:var(--display);font-weight:600;font-size:13px;background:var(--sun);color:var(--ink);border:3px solid var(--ink);border-radius:999px;padding:3px 10px;transform:rotate(6deg)}
+.station .client{display:flex;align-items:center;gap:8px;font-size:15px;color:var(--chalk);margin-top:auto}
+.av{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-weight:600;font-size:18px;color:#fff;flex:none;border:3px solid #fff;box-shadow:0 0 0 2px var(--ink)}
+/* mission */
+.steps{display:flex;gap:8px;flex-wrap:wrap}
+.step{font-family:var(--display);font-weight:600;font-size:15px;padding:6px 14px;border-radius:999px;border:3px solid var(--line);color:var(--muted);background:#fff}
+.step.on{background:var(--violet);color:#fff;border-color:var(--violet)}
+.step.ok{border-color:var(--regla);color:var(--regla);background:#E5F8F5}
+.mtitle{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;justify-content:space-between}
+.mtitle h2{font-size:clamp(24px,4vw,34px)}
+.slide{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,300px);gap:24px;align-items:center}
+.slide .txt{min-width:0;display:flex;flex-direction:column;gap:12px}
+.slide .txt p{margin:0;font-size:clamp(19px,2.3vw,23px);max-width:40ch}
+.slide .art{display:grid;place-items:center;min-width:0;animation:float 3.5s ease-in-out infinite}
+.slide .art svg{width:100%;max-width:300px;height:auto}
+.msg{--c:var(--sky);background:#fff;color:var(--paperInk);border:4px solid var(--c);border-radius:8px 28px 28px 28px;padding:18px 22px;font-size:clamp(19px,2.3vw,23px);position:relative;max-width:48ch;box-shadow:0 7px 0 var(--c);animation:pop .45s cubic-bezier(.2,1.6,.4,1) both}
+.msg b{display:inline-block;font-family:var(--display);font-weight:600;font-size:15px;letter-spacing:.5px;color:#fff;background:var(--c);border-radius:999px;padding:2px 12px;margin-bottom:8px}
+.note{background:var(--paper);color:var(--paperInk);font-family:var(--display);font-weight:500;font-size:clamp(20px,2.6vw,26px);line-height:1.45;padding:26px 28px;border-radius:14px;transform:rotate(-2deg);max-width:34ch;position:relative;box-shadow:0 12px 26px rgba(45,42,74,.2);border:3px solid var(--ink)}
+.note:before,.note:after{content:"";position:absolute;width:90px;height:28px;top:-14px;border-radius:4px;opacity:.9}
+.note:before{left:-18px;background:var(--sun);transform:rotate(-22deg)}
+.note:after{right:-18px;background:var(--pink);transform:rotate(18deg)}
+.speak{background:#fff;border:3px solid var(--line);border-radius:999px;padding:6px 14px;color:var(--muted);font-size:15px;font-weight:700}
+.speak:hover{border-color:var(--violet);color:var(--violet)}
+/* game common */
+.q{font-size:clamp(20px,2.6vw,26px);font-weight:700;margin:0;font-family:var(--display)}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.opt{background:#fff;border:4px solid var(--line);border-radius:18px;padding:14px 16px;font-size:19px;text-align:left;font-weight:700;box-shadow:0 5px 0 var(--line)}
+.opt:hover{border-color:var(--violet)}
+.opt.right{border-color:var(--regla);background:#E5F8F5}
+.opt.wrong{border-color:var(--no);background:#FFE8EA}
+.fb{min-height:1.5em;font-size:21px;font-weight:700;font-family:var(--display)}
+.fb.good{color:var(--regla)} .fb.bad{color:var(--no)}
+.score{font-family:var(--display);font-size:15px;color:var(--coral)}
+.gamegrid{display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:24px;align-items:center}
+.gamegrid > *{min-width:0}
+.thing{display:grid;justify-items:center;gap:6px;text-align:center}
+.thing svg{width:100%;max-width:220px;height:auto}
+.thing h3{font-size:20px}
+.obra{transition:transform .2s, filter .2s}
+.obra.react{transform:scale(1.12) rotate(-3deg);filter:hue-rotate(140deg) saturate(1.4)}
+/* VC3 */
+.pix{display:grid;gap:4px;width:min(100%,380px);margin:0 auto}
+.px{aspect-ratio:1;border-radius:8px;border:3px solid var(--line);background:#fff;color:var(--chalk);font-weight:700;font-size:clamp(13px,2.4vw,18px);display:grid;place-items:center;padding:0;font-family:var(--display)}
+.px.p{color:transparent;border-color:var(--ink);animation:pop .3s cubic-bezier(.2,1.6,.4,1) both}
+.pal{display:flex;flex-wrap:wrap;gap:8px}
+.pal span{display:flex;align-items:center;gap:6px;font-size:16px;font-weight:700;background:#fff;border:3px solid var(--line);border-radius:999px;padding:4px 12px 4px 6px}
+.pal i{width:24px;height:24px;border-radius:50%;display:inline-block;border:2px solid var(--ink)}
+/* cards */
+.card{background:#fff;color:var(--ink);border:4px solid var(--violet);border-radius:22px;padding:22px 24px;font-size:clamp(20px,2.6vw,25px);font-weight:700;max-width:40ch;margin:0 auto;text-align:center;box-shadow:0 8px 0 var(--violet);animation:pop .4s cubic-bezier(.2,1.6,.4,1) both}
+.card small{display:inline-block;font-weight:600;font-family:var(--display);font-size:15px;color:#fff;background:var(--violet);border-radius:999px;padding:2px 12px;margin-bottom:8px}
+.stamps{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.stampbtn{border:0;border-radius:18px;padding:14px;font-family:var(--display);font-weight:700;font-size:17px;color:#fff;transform:rotate(-2deg);box-shadow:0 6px 0 rgba(45,42,74,.25);transition:transform .1s}
+.stampbtn:hover{transform:rotate(0) scale(1.04)}
+.stampbtn.c-ia{background:var(--ia)} .stampbtn.c-regla{background:var(--regla)} .stampbtn.c-no{background:var(--no)}
+.c-ia{color:var(--ia);border-color:var(--ia)} .c-regla{color:var(--regla);border-color:var(--regla)} .c-no{color:var(--no);border-color:var(--no)}
+/* reward */
+.bigstamp{font-family:var(--display);font-weight:700;font-size:clamp(26px,4vw,40px);color:#fff;border:0;border-radius:26px;padding:20px 24px;text-align:center;line-height:1.1;transform:rotate(-6deg);animation:stamp .55s cubic-bezier(.2,1.6,.4,1) both;box-shadow:0 8px 0 rgba(45,42,74,.25);outline:4px dashed rgba(255,255,255,.8);outline-offset:-14px}
+.bigstamp.c-ia{background:var(--ia)} .bigstamp.c-regla{background:var(--regla)} .bigstamp.c-no{background:var(--no)}
+.bigstamp.c-go{background:linear-gradient(135deg,var(--coral),var(--pink) 50%,var(--violet));display:inline-block}
+@keyframes stamp{from{transform:rotate(-6deg) scale(2.2);opacity:0}to{transform:rotate(-6deg) scale(1);opacity:1}}
+@keyframes pop{from{transform:scale(.6);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes wiggle{0%,100%{transform:rotate(0)}10%{transform:rotate(-8deg)}20%{transform:rotate(8deg)}30%{transform:rotate(0)}}
+@keyframes fall{to{transform:translate(var(--dx),110vh) rotate(var(--r));opacity:.9}}
+.confetti{position:fixed;top:-20px;width:12px;height:16px;border-radius:3px;z-index:50;pointer-events:none;animation:fall var(--t) cubic-bezier(.25,.6,.4,1) forwards}
+.think{border-left:6px solid var(--sun);background:#FFF6E0;border-radius:0 14px 14px 0;padding:10px 14px 10px 16px;font-size:clamp(19px,2.4vw,22px);font-weight:700}
+.nav{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.foot{color:var(--muted);font-size:14px;text-align:center}
+@media (max-width:720px){
+  .slide,.gamegrid{grid-template-columns:1fr}
+  .slide .art{order:-1}.slide .art svg{max-width:200px}
+}
+.eyebrow{display:inline-block;font-family:var(--display);font-size:15px;font-weight:600;color:var(--violet);margin-bottom:6px}
+.mission{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:24px;align-items:start}
+.mission > *{min-width:0}
+.plan,.side{display:flex;flex-direction:column;gap:16px}
+.todo{margin:0;padding:0;list-style:none;counter-reset:t;display:flex;flex-direction:column;gap:10px}
+.todo li{counter-increment:t;display:flex;gap:14px;align-items:center;font-size:clamp(19px,2.3vw,23px);font-weight:700;background:#fff;border:3px solid var(--line);border-radius:18px;padding:12px 16px;animation:pop .4s cubic-bezier(.2,1.6,.4,1) both}
+.todo li:nth-child(2){animation-delay:.08s}.todo li:nth-child(3){animation-delay:.16s}.todo li:nth-child(4){animation-delay:.24s}
+.todo li:before{content:counter(t);font-family:var(--display);font-weight:700;width:42px;height:42px;border-radius:50%;background:var(--sky);color:#fff;display:grid;place-items:center;flex:none;font-size:20px}
+.todo li:nth-child(2):before{background:var(--coral)}.todo li:nth-child(3):before{background:var(--regla)}.todo li:nth-child(4):before{background:var(--violet)}
+.goal{border:4px dashed var(--sun);background:#FFF8E6;border-radius:18px;padding:12px 16px}
+.need{background:var(--board2);border-radius:18px;padding:12px 16px}
+.goal p,.need p{margin:0;font-size:clamp(18px,2.2vw,21px);font-weight:700}
+.goal .eyebrow{color:#C98A00}
+.roles{display:flex;flex-wrap:wrap;gap:8px}
+.roles span{background:#fff;border:3px solid var(--line);border-radius:14px;padding:8px 12px;font-size:15px}
+.roles b{display:block;font-size:17px}
+.checks{display:flex;flex-direction:column;gap:8px}
+.chk{display:flex;gap:12px;align-items:center;background:#fff;border:3px solid var(--line);border-radius:14px;padding:10px 14px;font-size:19px;font-weight:700;cursor:pointer}
+.chk:has(input:checked){border-color:var(--regla);background:#E5F8F5}
+.chk input{width:28px;height:28px;accent-color:var(--regla);flex:none}
+.chk input:checked + span{text-decoration:line-through;color:var(--muted)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.tile{background:#fff;border:4px solid var(--line);border-radius:20px;padding:12px;font-size:18px;font-weight:700;display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;box-shadow:0 5px 0 var(--line);transition:transform .1s}
+.tile:hover{transform:translateY(-2px)}
+.tile .e{font-size:38px;line-height:1}
+.tile small{font-size:14px;font-weight:400}
+.tile[aria-pressed="true"]{border-color:var(--sun);background:#FFF3CC;box-shadow:0 5px 0 var(--sun)}
+.tile.right{border-color:var(--regla);background:#E5F8F5;box-shadow:0 5px 0 var(--regla)} .tile.wrong{border-color:var(--no);background:#FFE8EA;box-shadow:0 5px 0 var(--no)}
+.tile[disabled]{opacity:.55}
+.flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.slot{border:4px dashed var(--line);border-radius:18px;min-height:80px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--display);font-weight:600;font-size:26px;color:#C9C1EA;text-align:center;padding:6px;background:#fff}
+.slot.filled{border-style:solid;border-color:var(--regla);background:#E5F8F5;color:var(--chalk);font-family:var(--body);font-size:18px;animation:pop .35s cubic-bezier(.2,1.6,.4,1) both}
+.slot small{font-size:13px;color:var(--muted)}
+.preds{display:flex;flex-direction:column;gap:10px}
+.pred{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;background:#fff;border:3px solid var(--line);border-radius:18px;padding:10px 14px;font-size:19px;font-weight:700}
+.yn2{display:flex;gap:8px}
+.btn.small{padding:7px 14px;font-size:17px}
+.btn.picked,.opt.picked{outline:4px solid var(--sun);outline-offset:2px;background:#FFF3CC}
+@media (max-width:720px){.mission{grid-template-columns:1fr}.flow{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.confetti{display:none}}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <svg width="58" height="58" viewBox="0 0 56 56" aria-hidden="true"><path d="M28 3C13 3 3 13 3 27c0 13 10 24 22 24 5 0 6-4 4-7-2-4 1-7 5-7h6c9 0 13-6 13-12C53 13 42 3 28 3z" fill="#FFC23C" stroke="#2D2A4A" stroke-width="3"/><circle cx="16" cy="22" r="5" fill="#FF6B5A"/><circle cx="27" cy="13" r="5" fill="#3DA5F5"/><circle cx="39" cy="17" r="5" fill="#00A096"/><circle cx="43" cy="29" r="5" fill="#8C6CF2"/><circle cx="17" cy="36" r="5" fill="#FF7EB6"/></svg>
+      <div><small>Taller de Arte y Máquinas · Apertura 1 de 7</small><h1>Una obra que siente</h1></div>
+    </div>
+    
+  </header>
+  <main id="app" class="board" aria-live="polite"></main>
+  <p class="foot">Comparte esta pantalla al inicio de la VC 1 para abrir el taller. Dura de 3 a 4 minutos.</p>
+</div>
+
+<script>
+(function(){
+const ONLY=0;
+const $=(h)=>{const t=document.createElement('template');t.innerHTML=h.trim();return t.content.firstElementChild};
+const app=document.getElementById('app');
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+let saved={};try{saved=JSON.parse(localStorage.getItem('taller-insignias')||'{}')}catch(e){saved={}}
+const save=()=>{try{localStorage.setItem('taller-insignias',JSON.stringify(saved))}catch(e){}};
+const canSpeak=('speechSynthesis' in window);
+function speak(t){if(!canSpeak)return;try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='es-ES';u.rate=.95;const v=speechSynthesis.getVoices().find(v=>/^es/i.test(v.lang));if(v)u.voice=v;speechSynthesis.speak(u)}catch(e){}}
+const speakBtn=(t)=>canSpeak?`<button class="speak" data-say="${t.replace(/"/g,'&quot;')}">🔊 Leer en voz alta</button>`:'';
+
+function confetti(n){try{if(matchMedia('(prefers-reduced-motion: reduce)').matches)return}catch(e){}
+  const C=['#FF6B5A','#FFC23C','#00A096','#3DA5F5','#8C6CF2','#FF7EB6'];
+  for(let k=0;k<n;k++){const d=document.createElement('i');d.className='confetti';d.style.left=(Math.random()*100)+'vw';d.style.background=C[k%C.length];
+   if(k%3===0)d.style.borderRadius='50%';d.style.setProperty('--dx',(Math.random()*160-80)+'px');d.style.setProperty('--r',(Math.random()*720-360)+'deg');d.style.setProperty('--t',(1.6+Math.random()*1.4)+'s');d.style.animationDelay=(Math.random()*.4)+'s';
+   document.body.appendChild(d);setTimeout(()=>d.remove(),3600)}}
+/* ---------- drawings ---------- */
+const K='#2D2A4A';
+const ART={
+ caja:`<svg viewBox="0 0 300 260"><rect x="30" y="120" width="240" height="110" rx="10" fill="#8B5E3C" stroke="${K}" stroke-width="6"/><rect x="22" y="100" width="256" height="34" rx="8" fill="#A9744C" stroke="${K}" stroke-width="6"/>
+  <g transform="rotate(-8 80 70)"><rect x="40" y="40" width="80" height="44" rx="8" fill="none" stroke="#5B6CFF" stroke-width="6"/><text x="80" y="69" text-anchor="middle" font-family="Fredoka,sans-serif" font-size="16" fill="#5B6CFF">IA</text></g>
+  <g transform="rotate(4 150 60)"><rect x="110" y="30" width="80" height="44" rx="8" fill="none" stroke="#00A096" stroke-width="6"/><text x="150" y="59" text-anchor="middle" font-family="Fredoka,sans-serif" font-size="13" fill="#00A096">REGLA</text></g>
+  <g transform="rotate(-3 225 72)"><rect x="185" y="48" width="84" height="44" rx="8" fill="none" stroke="#FF4F5E" stroke-width="6"/><text x="227" y="77" text-anchor="middle" font-family="Fredoka,sans-serif" font-size="15" fill="#FF4F5E">NO</text></g>
+  <text x="150" y="190" text-anchor="middle" font-family="Fredoka,sans-serif" font-size="18" fill="#F7EED6">TALLER</text></svg>`,
+ obra:`<svg class="obra" viewBox="0 0 200 200"><rect x="4" y="4" width="192" height="192" fill="${K}"/><rect x="14" y="14" width="172" height="172" fill="#fff"/><rect x="14" y="14" width="86" height="86" fill="#E63946"/><rect x="100" y="14" width="86" height="43" fill="#F4A261"/><rect x="100" y="57" width="43" height="43" fill="#2A9D8F"/><circle cx="57" cy="143" r="36" fill="#1D3557"/><rect x="100" y="100" width="86" height="86" fill="#E9C46A"/><polygon points="143,112 176,174 110,174" fill="#264653"/><path d="M100 14V186M14 100H186" stroke="${K}" stroke-width="4"/></svg>`,
+ celular:`<svg viewBox="0 0 240 220"><rect x="70" y="20" width="100" height="180" rx="16" fill="#fff" stroke="${K}" stroke-width="7"/><rect x="84" y="42" width="72" height="128" rx="4" fill="#BFE3E0"/><circle cx="120" cy="31" r="5" fill="${K}"/></svg>`,
+ puerta:`<svg viewBox="0 0 240 220"><rect x="30" y="40" width="180" height="170" fill="#E9C46A" stroke="${K}" stroke-width="7"/><path d="M120 40V210" stroke="${K}" stroke-width="6"/><rect x="40" y="52" width="70" height="150" fill="#BFE3E0"/><rect x="130" y="52" width="70" height="150" fill="#BFE3E0"/><rect x="100" y="14" width="40" height="20" rx="4" fill="${K}"/><path d="M95 42Q120 62 145 42M85 52Q120 82 155 52" fill="none" stroke="#E63946" stroke-width="5"/></svg>`,
+ termometro:`<svg viewBox="0 0 240 220"><rect x="95" y="20" width="50" height="140" rx="25" fill="#fff" stroke="${K}" stroke-width="7"/><circle cx="120" cy="170" r="34" fill="#E63946" stroke="${K}" stroke-width="7"/><rect x="111" y="70" width="18" height="100" fill="#E63946"/><rect x="150" y="40" width="70" height="40" rx="6" fill="${K}"/><text x="185" y="68" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="20" fill="#9EF0A0">37°</text></svg>`,
+ balanza:`<svg viewBox="0 0 240 220"><rect x="30" y="140" width="180" height="50" rx="10" fill="#fff" stroke="${K}" stroke-width="7"/><rect x="85" y="152" width="70" height="26" rx="4" fill="${K}"/><text x="120" y="172" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="18" fill="#9EF0A0">250 g</text><ellipse cx="120" cy="128" rx="80" ry="12" fill="#9AA0A6" stroke="${K}" stroke-width="6"/><circle cx="96" cy="96" r="26" fill="#E63946" stroke="${K}" stroke-width="6"/><circle cx="146" cy="100" r="22" fill="#F4A261" stroke="${K}" stroke-width="6"/></svg>`,
+ luz:`<svg viewBox="0 0 240 220"><path d="M80 110a40 40 0 1 1 80 0c0 24-16 30-16 50h-48c0-20-16-26-16-50z" fill="#FFE27A" stroke="${K}" stroke-width="7"/><rect x="96" y="166" width="48" height="26" rx="5" fill="#9AA0A6" stroke="${K}" stroke-width="6"/><path d="M40 60L20 50M40 110H16M200 60L220 50M200 110H224M120 20V2" stroke="#F4A261" stroke-width="7" stroke-linecap="round"/><circle cx="186" cy="186" r="22" fill="${K}"/><circle cx="186" cy="186" r="9" fill="#E63946"/></svg>`,
+ netbook:`<svg viewBox="0 0 240 220"><rect x="40" y="40" width="160" height="110" rx="8" fill="#fff" stroke="${K}" stroke-width="7"/><rect x="54" y="54" width="132" height="82" fill="#BFE3E0"/><circle cx="120" cy="47" r="3.5" fill="${K}"/><path d="M20 160H220L205 190H35Z" fill="#E9C46A" stroke="${K}" stroke-width="7" stroke-linejoin="round"/></svg>`,
+ murga:`<svg viewBox="0 0 300 240"><rect width="300" height="240" rx="16" fill="#1a1626"/><polygon points="80,10 110,10 170,200 20,200" fill="#FFD166" opacity=".35"/><polygon points="190,10 220,10 280,200 130,200" fill="#5B6CFF" opacity=".35"/><rect y="200" width="300" height="40" fill="#5A3B26"/><circle cx="150" cy="170" r="34" fill="#E63946" stroke="#F7EED6" stroke-width="6"/><ellipse cx="150" cy="170" rx="34" ry="10" fill="#F7EED6" opacity=".5"/><path d="M0 0H50Q36 110 50 200H0ZM300 0H250Q264 110 250 200H300Z" fill="#7B1E2B"/></svg>`,
+ centro:`<svg viewBox="0 0 300 240"><path d="M30 110L150 40L270 110Z" fill="#E9C46A" stroke="${K}" stroke-width="7" stroke-linejoin="round"/><rect x="50" y="110" width="200" height="110" fill="#F7EED6" stroke="${K}" stroke-width="7"/><rect x="72" y="130" width="40" height="70" fill="#2A9D8F"/><rect x="130" y="130" width="40" height="90" fill="#E63946"/><rect x="188" y="130" width="40" height="70" fill="#1D3557"/><g transform="translate(150 175) rotate(-6)"><rect x="-70" y="-20" width="140" height="40" fill="#fff" stroke="${K}" stroke-width="4"/><text y="8" text-anchor="middle" font-family="Fredoka,sans-serif" font-size="13" fill="${K}">PEDIDOS: 6</text></g></svg>`,
+};
+function paperBg(type){
+  let s=`<rect width="100" height="100" fill="#FBF8EF"/>`;
+  if(type==='rayado') for(let y=12;y<100;y+=10) s+=`<path d="M0 ${y}H100" stroke="#9fbde0" stroke-width="1"/>`;
+  if(type==='cuadri') for(let k=0;k<=100;k+=8) s+=`<path d="M${k} 0V100M0 ${k}H100" stroke="#c4d4e4" stroke-width=".8"/>`;
+  return s;
+}
+function starPath(n,inner,r=30,cx=50,cy=53){let p=[];for(let i=0;i<2*n;i++){const a=Math.PI*i/n-Math.PI/2;const rr=i%2?r*inner:r;p.push((cx+rr*Math.cos(a)).toFixed(1)+','+(cy+rr*Math.sin(a)).toFixed(1))}return p.join(' ')}
+const DRAW={
+ estrella:(c='#2B3A67',n=5,inner=.42)=>`<polygon points="${starPath(n,inner)}" fill="none" stroke="${c}" stroke-width="3.5" stroke-linejoin="round" transform="rotate(${Math.round(Math.random()*20-10)} 50 53)"/>`,
+ casa:(c='#2B3A67')=>`<g fill="none" stroke="${c}" stroke-width="3.5" stroke-linejoin="round"><path d="M24 50L50 26L76 50"/><rect x="28" y="50" width="44" height="32"/><rect x="44" y="64" width="12" height="18"/><rect x="33" y="56" width="8" height="8"/></g>`,
+ sol:(c='#C04A1C')=>{let r='';for(let i=0;i<10;i++){const a=i*Math.PI/5;r+=`<path d="M${50+22*Math.cos(a)} ${52+22*Math.sin(a)}L${50+32*Math.cos(a)} ${52+32*Math.sin(a)}"/>`}return `<g fill="none" stroke="${c}" stroke-width="3.5" stroke-linecap="round"><circle cx="50" cy="52" r="15"/>${r}</g>`},
+ flor:()=>{let p='';for(let i=0;i<8;i++){const a=i*Math.PI/4;p+=`<circle cx="${50+13*Math.cos(a)}" cy="${44+13*Math.sin(a)}" r="8"/>`}return `<g fill="none" stroke="#B0306E" stroke-width="2.8">${p}</g><circle cx="50" cy="44" r="6" fill="none" stroke="#E08A00" stroke-width="3"/><path d="M50 58V92" stroke="#2A7F62" stroke-width="3.5"/>`},
+};
+const pic=(paper,inner)=>`<svg viewBox="0 0 100 100">${paperBg(paper)}${inner}</svg>`;
+
+/* ---------- missions ---------- */
+const PEOPLE={lucia:{n:'Lucía',r:'curadora',c:'#3DA5F5'},vale:{n:'Valentina',r:'ilustradora',c:'#FF8A3D'},marta:{n:'Marta',r:'directora de la murga',c:'#FF4F8B'},centro:{n:'Centro cultural',r:'del barrio',c:'#00A096'}};
+const SELLO={ia:['LO HACEMOS','CON IA','c-ia'],regla:['ALCANZA CON','UNA REGLA','c-regla'],no:['NO LO','ACEPTAMOS','c-no']};
+const ROLES='<div class="roles"><span><b>🖱️ Maneja</b> usa la netbook</span><span><b>✏️ Registra</b> anota lo que pasa</span><span><b>🗣️ Habla</b> cuenta lo del grupo</span></div>';
+const M=[
+ {title:'Una obra que siente',who:'lucia',
+  recap:null,
+  slides:[
+   {art:'caja',html:`<p>En el barrio hay un taller que estuvo cerrado muchos años. Hoy lo abrimos y encontramos una caja con <b>tres sellos</b> y una nota.</p><div class="note">Aquí no hacemos magia. Hacemos máquinas que perciben. Usen los tres sellos. Yo me olvidé del tercero y por eso cerré.</div>`,say:'En el barrio hay un taller que estuvo cerrado muchos años. Hoy lo abrimos y encontramos una caja con tres sellos y una nota: Aquí no hacemos magia. Hacemos máquinas que perciben. Usen los tres sellos. Yo me olvidé del tercero y por eso cerré.'},
+   {art:'obra',msg:'¡Hola, equipo del taller! Soy Lucía. La gente pasa frente a las obras y ni las mira. Quiero una obra que se dé cuenta cuando alguien está cerca. ¿Cómo puede una obra “darse cuenta”?'}],
+  steps:['Elegir el nombre de nuestro equipo','Descubrir qué hace reaccionar a la obra','Buscar los sensores de aparatos que conocemos','Decidir en qué página de internet confiar'],
+  goal:'Podemos decir con qué percibe cada aparato y qué dato genera.',
+  need:'Netbook con micrófono y cámara',
+  warm:'percibe',
+  end:'Al final completamos la primera ficha de encargo. ¿Habrá sello?'},
+ {title:'Ajustamos la obra',who:'lucia',
+  recap:{txt:'La vez pasada descubrimos que la obra percibe con el <b>micrófono</b> y la <b>cámara</b>: los sensores convierten el sonido y el movimiento en números.'},
+  slides:[{art:'obra',msg:'¡Ayuda! En la inauguración la obra cambiaba de color con cualquier ruido. ¡Hasta con el estornudo del intendente! Quiero que reaccione solo cuando de verdad hay alguien.'}],
+  steps:['Abrir la plantilla “Obra que siente”','Mirar los números SONIDO y MOVIMIENTO','Cambiar el umbral hasta encontrar el número justo','Escribir nuestra regla: “Si hay ___, la obra ___”'],
+  goal:'La obra reacciona con un aplauso, pero no con una tos.',
+  need:'Netbook con la plantilla de Scratch abierta',
+  warm:'orden',
+  end:'Al final estampamos el primer sello del taller. 🎉'},
+ {title:'El dibujo en números',who:'vale',
+  recap:{txt:'Nuestra obra sigue una regla que escribimos nosotros. ¡Usamos el primer sello!',sello:'regla'},
+  slides:[{art:null,grid:true,msg:'Hola, soy Valentina, ilustradora. Les mandé un dibujo para la muestra, pero llegó a la computadora convertido en números. ¿Se rompió? ¿O la computadora guarda los dibujos así?'}],
+  steps:['Mirar el dibujo que llegó en números','Pintar nuestras filas en la planilla','Descubrir qué dibujo es','Probar qué pasa con menos cuadritos'],
+  goal:'Podemos explicar cómo guarda la computadora un dibujo.',
+  need:'La planilla del mosaico (la comparte la jefa o el jefe de taller)',
+  warm:'codigo',
+  end:'Al final: ¿la computadora ve un dibujo o ve números?'},
+ {title:'¿Qué mira la máquina?',who:'vale',
+  recap:{txt:'Descubrimos que la computadora no ve dibujos: <b>ve números</b>, un número por cada cuadrito.'},
+  slides:[{art:null,draw:true,msg:'Ahora quiero algo más difícil. En la muestra, los visitantes van a dibujar en una mesa: una estrella, una casa o un sol. Quiero una máquina que adivine qué dibujaron. ¿Podrán enseñarle?'}],
+  steps:['Intentar escribir una regla para reconocer una estrella','Ordenar los dibujos en carpetas con nombres claros','Enseñarle a la máquina con ejemplos','Probarla con dibujos tramposos'],
+  goal:'Podemos explicar qué mira la máquina para decidir.',
+  need:'Los dibujos de la clase o los del taller',
+  warm:'prediccion4',
+  end:'Al final elegimos un sello para este encargo. ¿Cuál será?'},
+ {title:'El escenario que escucha',who:'marta',
+  recap:{txt:'Le enseñamos a la máquina con ejemplos y aprendió a reconocer dibujos. ¡Usamos otro sello! Y nos quedó una pregunta: si para enseñarle hay que grabar a personas, <b>¿qué tenemos que cuidar?</b>',sello:'ia'},
+  slides:[{art:'murga',msg:'¡Buenas, gurises! Soy Marta, de la murga Los Desafinados del Barrio. Quiero que las luces del escenario cambien con la percusión. Para enseñarle a la máquina hay que grabar a gente… así que cuidado con eso.'}],
+  steps:['Acordar cómo cuidamos los datos de las personas','Planificar qué sonidos le enseñamos','Entrenar a la máquina','Probarla con nuestro grupo'],
+  goal:'Entrenamos la máquina sin grabar a nadie sin permiso.',
+  need:'Netbook con micrófono · algo para golpear la mesa',
+  warm:'datos',
+  end:'Al final guardamos el modelo para el ensayo general.'},
+ {title:'Ensayo general',who:'marta',
+  recap:{txt:'Acordamos cuidar los datos: <b>pedimos permiso</b>, <b>no compartimos</b> y <b>borramos al terminar</b>. El escenario funcionó con nuestro grupo.'},
+  slides:[{art:'murga',msg:'¡Probamos el escenario en el ensayo y funcionó… más o menos! Con el ruido del público se confundía. Y con algunas personas no reaccionaba nada. ¿Qué habrá pasado? ¿Lo pueden arreglar antes del estreno?'}],
+  steps:['Probar la máquina en situaciones difíciles','Anotar qué esperábamos y qué pasó','Descubrir qué datos le faltaron','Mejorarla y conectarla al escenario'],
+  goal:'El escenario funciona con más personas que antes.',
+  need:'El modelo que guardamos · la tabla de pruebas',
+  warm:'prediccion6',
+  end:'Al final elegimos un sello… pero con una condición.'},
+ {title:'La pila de encargos',who:'centro',
+  recap:{txt:'El escenario funciona si le enseñamos con <b>todas las personas</b> que lo van a usar. Ya usamos dos sellos… ¿y el tercero?'},
+  slides:[{art:'centro',msg:'Hola, equipo. Después de todo lo que hicieron, llegó una pila de pedidos: todos quieren “una IA” para algo. Pero no todo se tiene que hacer con IA, ¿no? Ayuden a decidir.'}],
+  steps:['Leer cada pedido de la pila','Elegir un sello para cada uno y explicar por qué','Poner a prueba a un asistente que “sabe de todo”','Imaginar qué máquinas habrá dentro de 20 años'],
+  goal:'Usamos los tres sellos y podemos explicar por qué.',
+  need:'Las tarjetas de pedidos',
+  warm:'sellos',
+  end:'Hoy, por fin, el centro cultural nos cuenta por qué cerró el taller.'},
+];
+
+/* ---------- header badges ---------- */
+function renderBadges(){return;const b=document.getElementById('badges');b.innerHTML='';M.forEach((m,i)=>{b.appendChild($(`<div class="badge ${saved[i]?'on':''}" title="Apertura ${i+1}${saved[i]?' hecha':''}">${i+1}</div>`))})}
+
+/* ---------- map ---------- */
+function stopSpeech(){try{canSpeak&&speechSynthesis.cancel()}catch(e){}}
+function renderMap(){return openMission(ONLY,0);
+  stopSpeech();renderBadges();app.innerHTML='';
+  app.appendChild($(`<div class="intro"><h2 style="font-size:clamp(20px,3vw,28px)">Elige la apertura de hoy</h2><p>Antes de empezar cada clase, el taller recibe un encargo. Aquí lo leemos juntos, vemos qué vamos a hacer y calentamos motores.</p></div>`));
+  const map=$(`<div class="map" style="margin-top:16px"></div>`);
+  M.forEach((m,i)=>{const p=PEOPLE[m.who];
+    const s=$(`<button class="station" id="st${i+1}" style="--c:${p.c}"><span class="vc">VC ${i+1} · 3 a 4 min</span><h3>${m.title}</h3>${saved[i]?'<span class="done">✓ HECHA</span>':''}<span class="client"><span class="av" style="background:${p.c}">${p.n[0]}</span>${p.n}, ${p.r}</span></button>`);
+    s.onclick=()=>openMission(i,0);map.appendChild(s)});
+  app.appendChild(map);
+  const r=$(`<div class="row" style="margin-top:16px"><span class="spacer"></span><button class="btn ghost" id="reset" style="font-size:15px;padding:8px 14px">Reiniciar insignias</button></div>`);
+  r.querySelector('#reset').onclick=()=>{saved={};save();renderMap()};app.appendChild(r);
+}
+
+/* ---------- mission shell ---------- */
+const PH=['Historia','El plan','Calentamiento','¡A trabajar!'];
+function openMission(i,phase,slide=0){
+  stopSpeech();
+  const m=M[i],p=PEOPLE[m.who];
+  const slides=(m.recap?[{recap:true}]:[]).concat(m.slides);
+  app.innerHTML='';
+  const head=$(`<div style="display:flex;flex-direction:column;gap:14px"><div class="mtitle"><h2>VC ${i+1} · ${m.title}</h2><button class="btn ghost" id="back" style="font-size:15px;padding:8px 14px">← Mapa</button></div><div class="steps">${PH.map((n,k)=>`<span class="step ${k===phase?'on':k<phase?'ok':''}">${k<phase?'✓ ':''}${n}</span>`).join('')}</div></div>`);
+  head.querySelector('#back').remove();app.appendChild(head);
+  const body=$(`<div style="margin-top:20px;display:flex;flex-direction:column;gap:20px"></div>`);app.appendChild(body);
+  const nav=$(`<div class="nav" style="margin-top:22px"><button class="btn ghost" id="prev" style="font-size:15px;padding:8px 14px">← Atrás</button><span class="spacer"></span><button class="btn go" id="next">Seguir →</button></div>`);
+  const next=nav.querySelector('#next'),prev=nav.querySelector('#prev');
+  prev.onclick=()=>{ if(phase===0){ if(slide>0) openMission(i,0,slide-1); else renderMap() } else if(phase===1) openMission(i,0,slides.length-1); else openMission(i,phase-1) };
+  if(phase===0){
+    const s=slides[slide];
+    if(s.recap){
+      const r=m.recap;
+      body.appendChild($(`<div class="slide"><div class="txt"><span class="eyebrow">Lo que pasó antes</span><p>${r.txt}</p><div>${speakBtn(r.txt.replace(/<[^>]+>/g,''))}</div></div><div class="art">${r.sello?`<div class="bigstamp ${SELLO[r.sello][2]}" style="animation:none">${SELLO[r.sello][0]}<br>${SELLO[r.sello][1]}</div>`:ART.caja}${r.pista?`<div class="note" style="margin-top:${r.sello?'26px':'0'};font-size:clamp(17px,2vw,21px)">${r.pista}</div>`:''}</div></div>`));
+    } else {
+      let art=s.art?ART[s.art]:'';
+      if(s.grid) art=`<div class="pix" style="grid-template-columns:repeat(8,1fr);max-width:260px">${G8.join('').split('').map(v=>`<div class="px">${v}</div>`).join('')}</div>`;
+      if(s.draw) art=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:280px">${[pic('liso',DRAW.estrella()),pic('liso',DRAW.casa()),pic('liso',DRAW.sol())].join('')}</div>`;
+      const txt=s.html?s.html:`<div class="msg" style="--c:${p.c}"><b>✉️ Mensaje de ${p.n}</b>${s.msg}</div>`;
+      body.appendChild($(`<div class="slide"><div class="txt">${txt}<div>${speakBtn(s.say||s.msg)}</div></div><div class="art">${art}</div></div>`));
+    }
+    next.onclick=()=>{ if(slide<slides.length-1) openMission(i,0,slide+1); else openMission(i,1)};
+  } else if(phase===1){
+    const say='Hoy el taller va a: '+m.steps.join('. ')+'. Lo logramos si: '+m.goal;
+    body.appendChild($(`<div class="mission"><div class="plan"><span class="eyebrow">Hoy el taller va a…</span><ol class="todo">${m.steps.map(s=>`<li>${s}</li>`).join('')}</ol></div>
+      <div class="side"><div class="goal"><span class="eyebrow">Lo logramos si…</span><p>${m.goal}</p></div><div class="need"><span class="eyebrow">Necesitamos</span><p>${m.need}</p></div><div><span class="eyebrow">Roles del grupo</span>${ROLES}</div></div></div>`));
+    body.appendChild($(`<div>${speakBtn(say)}</div>`));
+    next.textContent='Calentamos motores →';next.onclick=()=>openMission(i,2);
+  } else if(phase===2){
+    next.disabled=true;next.textContent='¡A trabajar! →';
+    WARM[m.warm](body,()=>{next.disabled=false;confetti(45)});
+    next.onclick=()=>openMission(i,3);
+    const skip=$(`<button class="btn ghost" style="font-size:15px;padding:8px 14px">Saltar</button>`);skip.onclick=()=>openMission(i,3);nav.insertBefore(skip,next);
+  } else {
+    saved[i]=1;save();renderBadges();confetti(110);
+    const w=$(`<div class="mission"><div class="plan"><div class="bigstamp c-go">¡TALLER<br>ABIERTO!</div><p class="think" style="margin-top:28px">${m.end}</p></div>
+      <div class="side"><span class="eyebrow">Vamos tachando a medida que avanzamos</span><div class="checks">${m.steps.map((s,k)=>`<label class="chk"><input type="checkbox" id="c${i}_${k}"><span>${s}</span></label>`).join('')}</div><div class="goal"><span class="eyebrow">Lo logramos si…</span><p>${m.goal}</p></div></div></div>`);
+    body.appendChild(w);
+    next.textContent='Empezar de nuevo';next.onclick=renderMap;
+  }
+  app.appendChild(nav);
+  app.querySelectorAll('[data-say]').forEach(b=>b.onclick=()=>speak(b.dataset.say));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ---------- warm-ups (1 minuto, sin adelantar respuestas) ---------- */
+const G8=["00000000","00004330","00004300","01111110","01111112","01111122","01111220","00112200"];
+const PAL=['#FFFFFF','#E63946','#A4161A','#2A9D8F','#6B4226','#FFB4B4'];
+function header(body,q,sub){body.appendChild($(`<div><span class="eyebrow">Calentamiento · 1 minuto</span><p class="q">${q}</p>${sub?`<p class="muted" style="margin:4px 0 0">${sub}</p>`:''}</div>`))}
+function tiles(body,items,done,{okMsg,yes='Sí',no='No'}){
+  /* items: [label, correct(bool), emoji] — tap to toggle, then check */
+  const g=$(`<div class="tiles">${items.map((t,k)=>`<button class="tile" data-k="${k}" aria-pressed="false"><span class="e">${t[2]}</span>${t[0]}</button>`).join('')}</div>`);
+  const fb=$(`<div class="fb"></div>`);const go=$(`<button class="btn go" style="align-self:flex-start">Revisar</button>`);
+  g.querySelectorAll('.tile').forEach(b=>b.onclick=()=>{if(g.dataset.l)return;const on=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',on)});
+  go.onclick=()=>{g.dataset.l=1;let ok=0;g.querySelectorAll('.tile').forEach((b,k)=>{const sel=b.getAttribute('aria-pressed')==='true',c=items[k][1];b.classList.add(sel===c?'right':'wrong');if(sel===c)ok++;if(c&&!sel)b.classList.add('missed')});fb.className='fb good';fb.textContent=`${ok} de ${items.length} bien. ${okMsg}`;go.remove();done()};
+  body.appendChild(g);body.appendChild(go);body.appendChild(fb);
+}
+const WARM={
+ percibe(body,done){header(body,'¿Cuáles de estas cosas pueden “darse cuenta” de algo?','Toquen las que perciben algo del mundo. Después tocamos “Revisar”.');
+   tiles(body,[['El celular',true,'📱'],['Una piedra',false,'🪨'],['La puerta automática',true,'🚪'],['Un lápiz',false,'✏️'],['El termómetro',true,'🌡️'],['Una silla',false,'🪑']],done,{okMsg:'Hoy vamos a descubrir CÓMO se dan cuenta.'})},
+ orden(body,done){header(body,'¿Se acuerdan cómo funciona la obra?','Toquen las cuatro partes en el orden correcto.');
+   const parts=['Sensor','Dato','Regla','Reacción'];const ex={Sensor:'el micrófono escucha',Dato:'SONIDO = 72',Regla:'si el sonido es mayor que…',Reacción:'¡cambia de color!'};
+   let k=0;const row=$(`<div class="flow"></div>`),pool=$(`<div class="tiles"></div>`),fb=$(`<div class="fb"></div>`);
+   parts.forEach(()=>row.appendChild($(`<div class="slot">?</div>`)));
+   shuffle(parts).forEach(p=>{const b=$(`<button class="tile">${p}<small class="muted">${ex[p]}</small></button>`);b.onclick=()=>{if(p===parts[k]){row.children[k].innerHTML=`<b>${p}</b><small>${ex[p]}</small>`;row.children[k].classList.add('filled');b.disabled=true;b.classList.add('right');k++;fb.className='fb good';fb.textContent=k<4?'¡Sí! ¿Y después?':'¡Eso! Hoy vamos a cambiar la REGLA.';if(k===4)done()}else{fb.className='fb bad';fb.textContent='Ese va más adelante. ¿Qué viene ahora?'}};pool.appendChild(b)});
+   body.appendChild(row);body.appendChild(pool);body.appendChild(fb)},
+ codigo(body,done){header(body,'Código secreto: cada número es un color.','Toquen cada cuadrito para pintarlo. ¿Qué aparece?');
+   const C=['#FFFFFF','#5CC98A','#2F6FD6'],G=["1111","1212","1111","2112","1221"];
+   body.appendChild($(`<div class="pal"><span><i style="background:${C[0]}"></i>0 = blanco</span><span><i style="background:${C[1]}"></i>1 = verde</span><span><i style="background:${C[2]}"></i>2 = azul</span></div>`));
+   const g=$(`<div class="pix" style="grid-template-columns:repeat(4,1fr);max-width:220px;margin:0"></div>`);let n=0;const fb=$(`<div class="fb"></div>`);
+   G.join('').split('').forEach(v=>{const c=$(`<button class="px">${v}</button>`);c.onclick=()=>{if(c.classList.contains('p'))return;c.classList.add('p');c.style.background=C[v];n++;if(n===20){fb.className='fb good';fb.textContent='¡Una carita! Hoy hacemos lo mismo con un dibujo mucho más grande.';done()}};g.appendChild(c)});
+   body.appendChild(g);body.appendChild(fb)},
+ prediccion4(body,done){header(body,'Predicción: ¿cómo le enseñarías a una máquina a reconocer una estrella dibujada a mano?','No hay respuesta correcta todavía: es nuestra predicción. Hoy la ponemos a prueba.');
+   poll(body,['Le escribo una regla: “si tiene 5 puntas, es estrella”','Le muestro muchos dibujos de estrellas','No se puede: las máquinas no entienden dibujos'],done,'Anotamos la predicción del grupo. ¡Al final de la clase vemos si teníamos razón!')},
+ datos(body,done){header(body,'¿Cuáles son datos personales?','Toquen los que dicen algo de una persona. Después tocamos “Revisar”.');
+   tiles(body,[['Tu voz',true,'🗣️'],['Tu cara en una foto',true,'🙂'],['Tu nombre',true,'🔤'],['El color del cielo',false,'☁️'],['La hora',false,'🕒'],['Cómo aplaudes',true,'👏']],done,{okMsg:'Hoy vamos a grabar voces y palmas: hay que cuidarlas.'})},
+ prediccion6(body,done){header(body,'Predicción: la máquina aprendió solo con nuestro grupo, en silencio. ¿Funcionará…','Voten como grupo. Hoy lo probamos de verdad.');
+   const S=['…con el público hablando?','…con las palmas de los gurises de primero?','…aplaudiendo desde lejos?'];let n=0;
+   const t=$(`<div class="preds">${S.map((s,k)=>`<div class="pred"><span>${s}</span><div class="yn2"><button class="btn small" data-k="${k}" data-v="1">✓ Sí</button><button class="btn small" data-k="${k}" data-v="0">✗ No</button></div></div>`).join('')}</div>`);
+   const fb=$(`<div class="fb"></div>`);
+   t.querySelectorAll('button').forEach(b=>b.onclick=()=>{const row=b.closest('.pred');if(row.dataset.v)return;row.dataset.v=b.dataset.v;row.querySelectorAll('button').forEach(x=>x.classList.toggle('picked',x===b));row.querySelectorAll('button').forEach(x=>x.disabled=x!==b);n++;if(n===3){fb.className='fb good';fb.textContent='Predicción guardada. ¡Ahora a probar!';done()}});
+   body.appendChild(t);body.appendChild(fb)},
+ sellos(body,done){header(body,'¿Se acuerdan de los tres sellos?','Toquen el sello que va con cada frase.');
+   const F=[['Le enseñamos a la máquina con ejemplos','ia'],['Escribimos nosotros cómo tiene que actuar','regla'],['Esto no lo debe decidir una máquina','no']];let k=0;
+   const card=$(`<div></div>`),st=$(`<div class="stamps">${['ia','regla','no'].map(s=>`<button class="stampbtn ${SELLO[s][2]}" data-s="${s}">${SELLO[s][0]} ${SELLO[s][1]}</button>`).join('')}</div>`),fb=$(`<div class="fb"></div>`);
+   const show=()=>card.innerHTML=`<div class="card"><small>Frase ${k+1} de 3</small>${F[k][0]}</div>`;
+   st.querySelectorAll('button').forEach(b=>b.onclick=()=>{if(k>=3)return;if(b.dataset.s===F[k][1]){fb.className='fb good';k++;if(k<3){fb.textContent='¡Sí!';show()}else{card.innerHTML='';fb.textContent='¡Los tres! Hoy los vamos a usar todos… incluso el tercero.';poll(body,['Las máquinas se rompieron','El taller aceptó un encargo que no debía','Se quedaron sin pintura'],done,'Anotamos la hipótesis. ¡Hoy lo descubrimos!','¿Por qué creen que cerró el taller?')}}else{fb.className='fb bad';fb.textContent='Ese no. Prueben otro.'}});
+   show();body.appendChild(card);body.appendChild(st);body.appendChild(fb)},
+};
+function poll(body,opts,done,msg,q){
+  const w=$(`<div style="display:flex;flex-direction:column;gap:12px">${q?`<p class="q">${q}</p>`:''}<div class="opts"></div><div class="fb"></div></div>`);
+  const o=w.querySelector('.opts'),fb=w.querySelector('.fb');
+  opts.forEach(t=>{const b=$(`<button class="opt">${t}</button>`);b.onclick=()=>{if(o.dataset.l)return;o.dataset.l=1;b.classList.add('picked');o.querySelectorAll('.opt').forEach(x=>{if(x!==b)x.style.opacity=.45});fb.className='fb good';fb.textContent=msg;done()};o.appendChild(b)});
+  body.appendChild(w);
+}
+
+/* ---------- boot ---------- */
+function boot(){openMission(ONLY,0)}
+if(canSpeak){try{speechSynthesis.getVoices();speechSynthesis.onvoiceschanged=()=>{}}catch(e){}}
+boot();
+})();
+</script>
+
+</body>
+</html>
