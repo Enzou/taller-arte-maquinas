@@ -1,0 +1,57 @@
+<div style="border: 6px solid #00a096; border-top: 35px solid #00a096; font-size: 16px; font-family: Roboto, 'Open Sans', sans-serif; color: #000000;" dir="ltr">
+<div style="padding-right: 2%;">
+<div style="background: #00a096; color: #ffffff; border-radius: 0 0 10px 10px; text-align: center; font-size: 18px; margin-top: -35px; margin-left: 80%; padding: 35px 8px 8px 8px; font-weight: bold;" dir="ltr">Bienvenida</div>
+</div>
+<div style="width: 76%; max-width: 850px; margin: 18px 0 0 15px; padding: 17px 28px; border-left: 30px solid #007a75; border-radius: 0 60px 60px 0; background-color: #00a096; color: #ffffff; font-family: Roboto, 'Open Sans', sans-serif;">
+<p style="margin: 0; color: #ffffff; font-family: Roboto, 'Open Sans', sans-serif; font-size: 18px; line-height: 1.5;"><strong style="font-size: 21px;">Taller de Arte y Máquinas:</strong> 7 videoclases para crear obras y máquinas que perciben, y aprender cuándo usar inteligencia artificial.</p>
+</div>
+<div style="padding: 26px 24px; color: #000000; font-family: Roboto, 'Open Sans', sans-serif;">
+<div style="margin: 0 0 26px; padding: 24px; border-radius: 12px; background-color: #f0faf9; text-align: center; font-family: Roboto, 'Open Sans', sans-serif;"><!-- Puedes reemplazar el emoji por una imagen del personaje -->
+<p style="margin: 0 auto 12px; font-size: 64px; line-height: 1;">🎨</p>
+<h2 style="margin: 0 0 12px; color: #007a75; font-family: Roboto, 'Open Sans', sans-serif; font-size: 25px; line-height: 1.3;">¡Les damos la bienvenida al taller!</h2>
+<p style="max-width: 720px; margin: 0 auto; color: #333333; font-family: Roboto, 'Open Sans', sans-serif; font-size: 18px; line-height: 1.6;">¡El taller vuelve a abrir! Estuvo cerrado muchos años, y ahora el nuevo equipo son ustedes. Van a recibir encargos de artistas del barrio y a crear obras y máquinas que perciben. En cada encargo tendrán que decidir algo muy importante: ¿lo hacemos con IA, alcanza con una regla o no lo aceptamos?</p>
+</div><div style="margin: 0 0 28px; padding: 20px; border: 3px dashed #00a096; border-radius: 10px; background-color: #f0faf9; color: #000000; text-align: center; font-family: Roboto, 'Open Sans', sans-serif;"><a style="text-decoration: none; color: #000000;" href="https://enzou.github.io/taller-arte-maquinas/video/" rel="noreferrer noopener" target="_blank"><strong style="color: #00a096; font-size: 18px;">Miren el video: así empieza la historia</strong></a>
+<p style="margin: 6px 0 14px; color: #333333; font-family: Roboto, 'Open Sans', sans-serif; font-size: 15px;">3 minutos · con subtítulos</p>
+<p><iframe src="https://enzou.github.io/taller-arte-maquinas/video/" width="100%" height="560" frameborder="0" allowfullscreen=""></iframe></p>
+</div><div style="margin: 0 0 28px; padding: 22px 24px; border-left: 6px solid #00a096; background-color: #ffffff; font-family: Roboto, 'Open Sans', sans-serif;">
+<p style="margin: 0 0 14px; color: #333333; font-family: Roboto, 'Open Sans', sans-serif; font-size: 18px; line-height: 1.6;"><em><strong>Equipo del taller:</strong></em></p>
+<p style="margin: 0; color: #007a75; font-family: Roboto, 'Open Sans', sans-serif; font-size: 19px; font-weight: bold; line-height: 1.5;"><em>Aquí no hacemos magia. Hacemos máquinas que perciben.</em></p>
+</div><div style="margin: 28px 0; padding: 20px; border: 3px dashed #00a096; border-radius: 12px; background-color: #fdf6c9; text-align: center; font-family: Roboto, 'Open Sans', sans-serif;">
+<h2 style="margin: 0 0 8px; color: #007a75; font-family: Roboto, 'Open Sans', sans-serif; font-size: 23px; line-height: 1.3;">Los tres sellos del taller</h2>
+<p style="margin: 0 0 18px; color: #333333; font-family: Roboto, 'Open Sans', sans-serif; font-size: 16px; line-height: 1.5;">Cada encargo termina con una decisión. ¿Cuál usarán?</p>
+<p style="margin: 0;"><img src="https://enzou.github.io/taller-arte-maquinas/recursos/comun/sello_lo_hacemos_con_IA.png" alt="Sello: Lo hacemos con IA" style="width: 30%; max-width: 230px; height: auto; margin: 0 1%;" /><img src="https://enzou.github.io/taller-arte-maquinas/recursos/comun/sello_alcanza_con_una_regla.png" alt="Sello: Alcanza con una regla" style="width: 30%; max-width: 230px; height: auto; margin: 0 1%;" /><img src="https://enzou.github.io/taller-arte-maquinas/recursos/comun/sello_no_lo_aceptamos.png" alt="Sello: No lo aceptamos" style="width: 30%; max-width: 230px; height: auto; margin: 0 1%;" /></p></div><h2 style="margin: 32px 0 18px; color: #000000; font-family: Roboto, 'Open Sans', sans-serif; font-size: 25px; line-height: 1.3; text-align: center;">El recorrido del taller</h2>
+<div style="margin: 0 0 12px; padding: 17px 20px; border-radius: 10px; background-color: #f0faf9; font-family: Roboto, 'Open Sans', sans-serif;">
+<p style="margin: 0; font-family: Roboto, 'Open Sans', sans-serif; font-size: 17px; line-height: 1.5;"><strong style="color: #007a75;">1. VC 1 · Una obra que siente.</strong> Lucía nos pide una obra que se dé cuenta de quién la mira.</p>
+</div>
+<div style="margin: 0 0 12px; padding: 17px 20px; border-radius: 10px; background-color: #f0faf9; font-family: Roboto, 'Open Sans', sans-serif;">
+<p style="margin: 0; font-family: Roboto, 'Open Sans', sans-serif; font-size: 17px; line-height: 1.5;"><strong style="color: #007a75;">2. VC 2 · Ajustamos la obra.</strong> Cambiamos una regla en Scratch para que la obra reaccione justo.</p>
+</div>
+<div style="margin: 0 0 12px; padding: 17px 20px; border-radius: 10px; background-color: #f0faf9; font-family: Roboto, 'Open Sans', sans-serif;">
+<p style="margin: 0; font-family: Roboto, 'Open Sans', sans-serif; font-size: 17px; line-height: 1.5;"><strong style="color: #007a75;">3. VC 3 · El dibujo en números.</strong> Recuperamos un dibujo que llegó convertido en números.</p>
+</div>
+<div style="margin: 0 0 12px; padding: 17px 20px; border-radius: 10px; background-color: #f0faf9; font-family: Roboto, 'Open Sans', sans-serif;">
+<p style="margin: 0; font-family: Roboto, 'Open Sans', sans-serif; font-size: 17px; line-height: 1.5;"><strong style="color: #007a75;">4. VC 4 · ¿Qué mira la máquina?.</strong> Le enseñamos a una máquina a reconocer dibujos.</p>
+</div>
+<div style="margin: 0 0 12px; padding: 17px 20px; border-radius: 10px; background-color: #f0faf9; font-family: Roboto, 'Open Sans', sans-serif;">
+<p style="margin: 0; font-family: Roboto, 'Open Sans', sans-serif; font-size: 17px; line-height: 1.5;"><strong style="color: #007a75;">5. VC 5 · El escenario que escucha.</strong> Cuidamos los datos y entrenamos una máquina con sonidos.</p>
+</div>
+<div style="margin: 0 0 12px; padding: 17px 20px; border-radius: 10px; background-color: #f0faf9; font-family: Roboto, 'Open Sans', sans-serif;">
+<p style="margin: 0; font-family: Roboto, 'Open Sans', sans-serif; font-size: 17px; line-height: 1.5;"><strong style="color: #007a75;">6. VC 6 · Ensayo general.</strong> Ponemos a prueba la máquina y la mejoramos.</p>
+</div>
+<div style="margin: 0 0 28px; padding: 17px 20px; border-radius: 10px; background-color: #f0faf9; font-family: Roboto, 'Open Sans', sans-serif;">
+<p style="margin: 0; font-family: Roboto, 'Open Sans', sans-serif; font-size: 17px; line-height: 1.5;"><strong style="color: #007a75;">7. VC 7 · La pila de encargos.</strong> Decidimos qué pedidos se hacen con IA, cuáles con una regla y cuáles no.</p>
+</div>
+<div style="margin: 0 0 28px; padding: 18px; border-radius: 10px; background-color: #f0faf9; font-family: Roboto, 'Open Sans', sans-serif;">
+<h3 style="margin: 0 0 6px; color: #007a75; font-family: Roboto, 'Open Sans', sans-serif; font-size: 21px; text-align: center;">Roles de cada equipo</h3>
+<table style="width: 100%; border-collapse: collapse;"><tbody><tr><td style="width: 33%; padding: 12px; vertical-align: top; text-align: center; font-family: Roboto, 'Open Sans', sans-serif;"><p style="margin: 0; font-size: 34px;">🖱️</p><p style="margin: 4px 0 0; color: #007a75; font-size: 19px; font-weight: bold;">Maneja</p><p style="margin: 4px 0 0; font-size: 16px;">Usa la netbook.</p></td><td style="width: 33%; padding: 12px; vertical-align: top; text-align: center; font-family: Roboto, 'Open Sans', sans-serif;"><p style="margin: 0; font-size: 34px;">✏️</p><p style="margin: 4px 0 0; color: #007a75; font-size: 19px; font-weight: bold;">Registra</p><p style="margin: 4px 0 0; font-size: 16px;">Anota lo que pasa.</p></td><td style="width: 33%; padding: 12px; vertical-align: top; text-align: center; font-family: Roboto, 'Open Sans', sans-serif;"><p style="margin: 0; font-size: 34px;">🗣️</p><p style="margin: 4px 0 0; color: #007a75; font-size: 19px; font-weight: bold;">Habla</p><p style="margin: 4px 0 0; font-size: 16px;">Cuenta lo del equipo.</p></td></tr></tbody></table>
+<p style="margin: 8px 0 0; text-align: center; font-size: 15px; color: #333333;">Los roles cambian en cada videoclase.</p></div><h3 style="margin: 0 0 14px; color: #007a75; font-family: Roboto, 'Open Sans', sans-serif; font-size: 22px; line-height: 1.3; text-align: center;">Consejo del taller</h3>
+<div style="max-width: 650px; margin: 0 auto; padding: 22px 26px; border: 3px dashed #00a096; border-radius: 10px; background-color: #fdf6c9; color: #1a1a1a; font-family: Roboto, 'Open Sans', sans-serif; font-size: 16px; line-height: 1.7;">
+<h2 style="margin: 0 0 10px; color: #007a75; font-family: Roboto, 'Open Sans', sans-serif; font-size: 24px; line-height: 1.3;">Importante:</h2>
+<p style="margin: 0 0 12px; font-family: Roboto, 'Open Sans', sans-serif; font-size: 18px;">En el taller <strong>cuidamos los datos de las personas</strong>: pedimos permiso antes de grabar o fotografiar a alguien, no compartimos lo que grabamos y lo borramos al terminar.</p>
+</div><div style="margin: 30px 0 0; padding: 24px; border: 3px dashed #00a096; border-radius: 12px; background-color: #f0faf9; text-align: center; font-family: Roboto, 'Open Sans', sans-serif;">
+<h2 style="margin: 0 0 10px; color: #007a75; font-family: Roboto, 'Open Sans', sans-serif; font-size: 24px; line-height: 1.3;">¿Están listos para abrir el taller?</h2>
+</div>
+</div>
+<div style="background: #00a096; color: #ffffff; border-radius: 100px 0 0 100px; border-right: 30px solid #007a75; padding: 1.5%; margin-right: 15px; width: 92%; margin-left: auto; margin-top: 18px; font-size: 18px; font-style: italic; font-weight: 600;">✏️ Antes de la primera videoclase, elijan el <strong>nombre de su equipo</strong>.</div>
+<div style="background: #ffffff; height: 24px;">&nbsp;</div>
+</div>
