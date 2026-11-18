@@ -1,0 +1,108 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Taller de Arte y Máquinas · Aperturas modo calma</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+<style>
+:root{--bg:#F7F6F2;--card:#FFFFFF;--ink:#1F1D36;--muted:#4A4766;--line:#C9C6DA;--accent:#00A096;--focus:#5B6CFF;--ok:#1B7F4B;--soft:#E8F6F4;--fs:1}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Atkinson Hyperlegible",Verdana,sans-serif;text-transform:uppercase;font-size:calc(22px*var(--fs));line-height:1.35;
+ padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:16px 32px}
+.wrap{max-width:1000px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+button{font:inherit;color:inherit;text-transform:uppercase;cursor:pointer}
+button:focus-visible{outline:5px solid var(--focus);outline-offset:4px}
+.top{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.top h1{font-size:calc(30px*var(--fs));margin:0}
+.top small{display:block;font-size:calc(16px*var(--fs));color:var(--muted);font-weight:700}
+.tools{display:flex;gap:8px;flex-wrap:wrap}
+.tool{background:var(--card);border:3px solid var(--ink);border-radius:14px;padding:8px 14px;font-weight:700;font-size:calc(17px*var(--fs))}
+.agenda{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.ag{background:var(--card);border:3px solid var(--line);border-radius:16px;padding:8px;text-align:center;font-weight:700;font-size:calc(17px*var(--fs));color:var(--muted)}
+.ag .e{display:block;font-size:calc(34px*var(--fs))}
+.ag.on{border-color:var(--ink);background:var(--soft);color:var(--ink);border-width:4px}
+.ag.done{opacity:.55}
+.card{background:var(--card);border:4px solid var(--ink);border-radius:24px;padding:clamp(18px,3vw,30px);display:flex;flex-direction:column;gap:18px;min-height:380px}
+.who{display:flex;gap:16px;align-items:center}
+.av{width:86px;height:86px;border-radius:50%;display:grid;place-items:center;font-size:46px;border:4px solid var(--ink);flex:none}
+.big{font-size:calc(30px*var(--fs));font-weight:700;margin:0;max-width:30ch}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+.btn{background:var(--card);border:4px solid var(--ink);border-radius:18px;padding:14px 22px;font-weight:700;font-size:calc(22px*var(--fs));min-height:64px}
+.btn.go{background:var(--ink);color:#fff}
+.btn[disabled]{opacity:.35;cursor:not-allowed}
+.steps{display:flex;flex-direction:column;gap:12px;margin:0;padding:0;list-style:none}
+.steps li{display:flex;gap:16px;align-items:center;border:3px solid var(--line);border-radius:18px;padding:12px 16px;font-weight:700;font-size:calc(26px*var(--fs))}
+.steps .e{font-size:calc(48px*var(--fs));flex:none}
+.steps .n{width:46px;height:46px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;flex:none;font-size:calc(22px*var(--fs))}
+.aviso{border:4px dashed #B07A00;background:#FFF6DA;border-radius:18px;padding:14px 18px;font-weight:700;font-size:calc(21px*var(--fs))}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.opt{background:var(--card);border:4px solid var(--ink);border-radius:22px;padding:16px;display:flex;flex-direction:column;align-items:center;gap:6px;font-weight:700;font-size:calc(24px*var(--fs));min-height:170px;justify-content:center}
+.opt .e{font-size:calc(70px*var(--fs));line-height:1}
+.opt.sel{background:var(--soft);border-width:6px;border-color:var(--ok)}
+.fb{font-weight:700;font-size:calc(26px*var(--fs));min-height:1.4em;color:var(--ok)}
+.sellos{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.sellos img{height:150px;max-width:100%}
+.pick{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.pick .btn{text-align:left}
+.foot{color:var(--muted);font-size:calc(15px*var(--fs));text-align:center;text-transform:none}
+@media (max-width:640px){.agenda{grid-template-columns:repeat(2,1fr)}.sellos img{height:100px}}
+</style>
+<div class="wrap">
+<div class="top"><div><small>TALLER DE ARTE Y MÁQUINAS · EDUCACIÓN ESPECIAL</small><h1 id="ttl">APERTURAS · MODO CALMA</h1></div>
+<div class="tools"><button class="tool" id="fsb" aria-pressed="false">🔠 LETRA MÁS GRANDE</button><button class="tool" id="home">☰ SESIONES</button></div></div>
+<div class="agenda" id="agenda" aria-label="Agenda de la sesión"></div>
+<main class="card" id="card" aria-live="polite"></main>
+<div class="row" style="justify-content:space-between"><button class="btn" id="prev">← ATRÁS</button><button class="btn go" id="next">SIGUIENTE →</button></div>
+<p class="foot">Sin tiempos ni animaciones. El docente avanza cuando el grupo está listo. Los botones se pueden usar con el teclado (Tab y Enter).</p>
+</div>
+<script>
+(function(){
+const D=[{"n": 1, "vc": "VC 1", "t": "Una obra que siente", "who": "Lucía", "rol": "la curadora", "emo": "🖼️", "col": "#3DA5F5", "hist": "El taller abre de nuevo. Lucía quiere una obra que se dé cuenta cuando alguien llega.", "msg": "¡Hola, equipo! Soy Lucía. La gente pasa y no mira las obras. Quiero una obra que se dé cuenta cuando alguien llega. ¿Me ayudan?", "plan": [["👀", "Miramos la obra."], ["👏", "Hacemos ruido y nos movemos."], ["🔍", "Buscamos los sensores."]], "aviso": "Vamos a hacer ruido con aplausos. Si el ruido te molesta, puedes taparte los oídos, usar auriculares o mirar desde tu lugar.", "q": "¿Con qué te das cuenta de un sonido?", "opts": [["👀", "Con los ojos"], ["👂", "Con los oídos"], ["✋", "Con las manos"]], "ok": 1, "sello": null, "cierre": "Las máquinas también se dan cuenta: tienen sensores.", "audio": "audio/sesion1_mensaje.mp3"}, {"n": 2, "vc": "VC 2", "t": "Ajustamos la obra", "who": "Lucía", "rol": "la curadora", "emo": "🖼️", "col": "#3DA5F5", "hist": "La obra cambia con cualquier ruido. Lucía quiere que cambie solo con mucho ruido.", "msg": "¡La obra cambia con cualquier ruido! ¡Hasta con un estornudo! Quiero que cambie solo cuando hay mucho ruido.", "plan": [["🔈", "Probamos con poco ruido."], ["🔊", "Probamos con mucho ruido."], ["✅", "Decimos si cambió."]], "aviso": "Vamos a hacer ruido con aplausos. Si el ruido te molesta, puedes taparte los oídos, usar auriculares o mirar desde tu lugar.", "q": "¿La obra tiene que cambiar con una tos?", "opts": [["✅", "Sí"], ["❌", "No"]], "ok": 1, "sello": "regla", "cierre": "Escribimos una regla: si hay mucho ruido, la obra cambia.", "audio": "audio/sesion2_mensaje.mp3"}, {"n": 3, "vc": "VC 3", "t": "El dibujo en números", "who": "Valentina", "rol": "la ilustradora", "emo": "🎨", "col": "#FF8A3D", "hist": "El dibujo de Valentina llegó lleno de números. ¿Se rompió?", "msg": "Hola, soy Valentina. Mandé un dibujo, pero llegó lleno de números. ¿Se rompió? ¿Me ayudan a recuperarlo?", "plan": [["🔢", "Miramos los números."], ["🎨", "Cada número es un color."], ["🖌️", "Pintamos el dibujo."]], "aviso": null, "q": "El 1 es rojo. ¿De qué color pinto el 1?", "opts": [["🟥", "Rojo"], ["🟦", "Azul"], ["🟨", "Amarillo"]], "ok": 0, "sello": null, "cierre": "La computadora no ve dibujos: guarda números.", "audio": "audio/sesion3_mensaje.mp3"}, {"n": 4, "vc": "VC 4", "t": "Enseñamos a la máquina", "who": "Valentina", "rol": "la ilustradora", "emo": "🎨", "col": "#FF8A3D", "hist": "Valentina quiere una máquina que reconozca estrellas y soles.", "msg": "Ahora quiero una máquina que reconozca dibujos: una estrella o un sol. ¿Le pueden enseñar?", "plan": [["⭐", "Juntamos estrellas."], ["☀️", "Juntamos soles."], ["🤖", "La máquina aprende."]], "aviso": null, "q": "¿Cómo aprende la máquina?", "opts": [["📚", "Con muchos ejemplos"], ["🪄", "Con magia"]], "ok": 0, "sello": null, "cierre": "La máquina aprende con los ejemplos que le mostramos.", "audio": "audio/sesion4_mensaje.mp3"}, {"n": 5, "vc": "VC 4", "t": "Probamos la máquina", "who": "Valentina", "rol": "la ilustradora", "emo": "🎨", "col": "#FF8A3D", "hist": "Probamos la máquina con dibujos nuevos. Algunos son tramposos.", "msg": "¿La máquina aprendió? Vamos a probarla con dibujos nuevos. ¡Algunos son tramposos!", "plan": [["🤔", "Adivinamos qué va a decir."], ["🧪", "Probamos."], ["✅", "Vemos si acertó."]], "aviso": null, "q": "Esta estrella tiene 7 puntas. ¿Qué va a decir la máquina?", "opts": [["⭐", "Estrella"], ["☀️", "Sol"]], "ok": null, "sello": "ia", "cierre": "La máquina sabe lo que le mostramos, y nada más.", "audio": "audio/sesion5_mensaje.mp3"}, {"n": 6, "vc": "VC 5", "t": "Cuidamos los datos", "who": "Marta", "rol": "de la murga", "emo": "🥁", "col": "#FF4F8B", "hist": "Marta quiere grabar sonidos de personas. Antes, hay que pedir permiso.", "msg": "¡Buenas, gurises! Soy Marta, de la murga. Quiero que las luces cambien con la música. Para eso hay que grabar a gente. ¡Cuidado con eso!", "plan": [["🙋", "Preguntamos."], ["👍", "Respetamos la respuesta."], ["🗑️", "Borramos al terminar."]], "aviso": null, "q": "Tu voz, ¿es un dato tuyo?", "opts": [["✅", "Sí"], ["❌", "No"]], "ok": 0, "sello": null, "cierre": "Antes de grabar o sacar una foto, pedimos permiso.", "audio": "audio/sesion6_mensaje.mp3"}, {"n": 7, "vc": "VC 5", "t": "El escenario que escucha", "who": "Marta", "rol": "de la murga", "emo": "🥁", "col": "#FF4F8B", "hist": "Marta quiere que las luces se prendan con las palmas.", "msg": "¡Quiero que las luces se prendan con las palmas! ¿Le enseñan a la máquina a reconocerlas?", "plan": [["👏", "Escuchamos palmas."], ["🤫", "Escuchamos silencio."], ["🤖", "La máquina aprende."]], "aviso": "Vamos a escuchar palmas grabadas. Si el ruido te molesta, puedes taparte los oídos o usar auriculares.", "q": "¿Con qué hacemos palmas?", "opts": [["✋", "Con las manos"], ["🦶", "Con los pies"]], "ok": 0, "sello": null, "cierre": "La máquina aprendió a reconocer las palmas.", "audio": "audio/sesion7_mensaje.mp3"}, {"n": 8, "vc": "VC 6", "t": "Ensayo general", "who": "Marta", "rol": "de la murga", "emo": "🥁", "col": "#FF4F8B", "hist": "En el ensayo, la máquina a veces se confundía.", "msg": "¡Probamos el escenario y a veces se confundía! ¿Lo pueden arreglar?", "plan": [["🧑‍🤝‍🧑", "Probamos con otra persona."], ["📣", "Probamos con ruido."], ["📏", "Probamos de lejos."]], "aviso": "Vamos a hacer ruido con aplausos. Si el ruido te molesta, puedes taparte los oídos, usar auriculares o mirar desde tu lugar.", "q": "Si la máquina se equivoca, ¿qué hacemos?", "opts": [["📚", "Le mostramos más ejemplos"], ["😠", "Nos enojamos"]], "ok": 0, "sello": "ia", "cierre": "Para que funcione con todos, le mostramos ejemplos de todos.", "audio": "audio/sesion8_mensaje.mp3"}, {"n": 9, "vc": "VC 7", "t": "La pila de pedidos", "who": "el centro cultural", "rol": "del barrio", "emo": "🏛️", "col": "#00A096", "hist": "Al centro cultural le llegaron muchos pedidos.", "msg": "¡Hola, equipo! Nos llegaron muchos pedidos. Todos quieren una máquina. ¿Nos ayudan a decidir?", "plan": [["📄", "Leemos el pedido."], ["🤔", "Pensamos."], ["🔖", "Ponemos el sello."]], "aviso": null, "q": "Una máquina quiere elegir al ganador del concurso. ¿Qué sello usamos?", "opts": [["🤖", "Lo hacemos con IA"], ["📏", "Alcanza con una regla"], ["✋", "No lo aceptamos"]], "ok": 2, "sello": "no", "cierre": "Decidir quién gana es cosa de personas.", "audio": "audio/sesion9_mensaje.mp3"}, {"n": 10, "vc": "VC 7", "t": "La máquina del futuro", "who": "el centro cultural", "rol": "del barrio", "emo": "🏛️", "col": "#00A096", "hist": "El taller usó los tres sellos. Ahora imaginamos el futuro.", "msg": "¡Usaron los tres sellos! El taller está abierto. ¿Cómo será una máquina dentro de muchos años?", "plan": [["💭", "Imaginamos."], ["✏️", "Dibujamos."], ["🖼️", "Mostramos."]], "aviso": null, "q": "¿Una máquina puede hacer todo?", "opts": [["✅", "Sí"], ["❌", "No"]], "ok": 1, "sello": "todos", "cierre": "Usamos los tres sellos. ¡El taller está abierto!", "audio": "audio/sesion10_mensaje.mp3"}],SE={"ia": "../../recursos/comun/sello_lo_hacemos_con_IA.png", "regla": "../../recursos/comun/sello_alcanza_con_una_regla.png", "no": "../../recursos/comun/sello_no_lo_aceptamos.png"};
+const AG=[['📖','HISTORIA'],['📋','PLAN'],['🎲','JUEGO'],['🔖','SELLO']];
+let s=null,step=0,choice=null;
+const $=id=>document.getElementById(id),card=$('card'),ag=$('agenda');
+const canSpeak='speechSynthesis' in window;
+function say(t){if(!canSpeak)return;try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t.toLowerCase());u.lang='es-ES';u.rate=.85;const v=speechSynthesis.getVoices().find(v=>/^es/i.test(v.lang));if(v)u.voice=v;speechSynthesis.speak(u)}catch(e){}}
+const sayBtn=t=>canSpeak?`<button class="btn" data-say="${t.replace(/"/g,'')}">🔈 LEER EN VOZ ALTA</button>`:'';
+function stop(){try{canSpeak&&speechSynthesis.cancel()}catch(e){};document.querySelectorAll('audio').forEach(a=>a.pause())}
+$('fsb').onclick=()=>{const on=$('fsb').getAttribute('aria-pressed')!=='true';$('fsb').setAttribute('aria-pressed',on);document.documentElement.style.setProperty('--fs',on?1.25:1);try{localStorage.setItem('ee-fs',on?'1':'')}catch(e){}};
+try{if(localStorage.getItem('ee-fs')){$('fsb').click()}}catch(e){}
+$('home').onclick=()=>{s=null;render()};
+$('prev').onclick=()=>{if(s===null)return;if(step>0){step--;render()}else{s=null;render()}};
+$('next').onclick=()=>{if(s===null)return;if(step<3){step++;render()}else{s=null;render()}};
+function render(){
+ stop();
+ if(s===null){
+  $('ttl').textContent='APERTURAS · MODO CALMA';ag.hidden=true;$('prev').hidden=true;$('next').hidden=true;
+  card.innerHTML=`<p class="big">ELIGE LA SESIÓN DE HOY</p><div class="pick">${D.map((d,i)=>`<button class="btn" data-i="${i}"><span style="font-size:1.4em">${d.emo}</span><br>SESIÓN ${d.n}<br>${d.t}</button>`).join('')}</div>`;
+  card.querySelectorAll('[data-i]').forEach(b=>b.onclick=()=>{s=+b.dataset.i;step=0;choice=null;render()});
+  try{history.replaceState(null,'','#')}catch(e){}
+  return}
+ const d=D[s];$('ttl').textContent=`SESIÓN ${d.n} · ${d.t}`;ag.hidden=false;$('prev').hidden=false;$('next').hidden=false;
+ ag.innerHTML=AG.map((a,k)=>`<div class="ag ${k===step?'on':k<step?'done':''}" ${k===step?'aria-current="step"':''}><span class="e">${a[0]}</span>${k<step?'✓ ':''}${a[1]}</div>`).join('');
+ $('next').textContent=step<3?'SIGUIENTE →':'TERMINAR ✓';
+ if(step===0){
+  card.innerHTML=`<div class="who"><div class="av" style="background:${d.col}33">${d.emo}</div><div><b>${d.who.toUpperCase()}</b><br><span style="color:var(--muted)">${d.rol.toUpperCase()}</span></div></div>
+  <p class="big">${d.hist}</p>
+  <div style="border:3px solid var(--line);border-radius:18px;padding:14px 18px"><b>✉️ MENSAJE</b><p style="margin:6px 0 0">${d.msg}</p></div>
+  <div class="row"><button class="btn go" id="play">🔊 ESCUCHAR EL MENSAJE</button>${sayBtn(d.hist)}</div><audio id="au" src="${d.audio}" preload="none"></audio>`;
+  $('play').onclick=()=>{stop();$('au').currentTime=0;$('au').play().catch(()=>{})};
+ } else if(step===1){
+  card.innerHTML=`<p class="big">HOY: ${d.plan.length} PASOS</p><ol class="steps">${d.plan.map((p,k)=>`<li><span class="n">${k+1}</span><span class="e">${p[0]}</span>${p[1]}</li>`).join('')}</ol>
+  ${d.aviso?`<div class="aviso">🔔 AVISO: ${d.aviso}</div>`:''}<div class="row">${sayBtn('Hoy: '+d.plan.map(p=>p[1]).join(' ')+(d.aviso?' Aviso: '+d.aviso:''))}</div>`;
+ } else if(step===2){
+  card.innerHTML=`<p class="big">${d.q}</p><div class="opts">${d.opts.map((o,k)=>`<button class="opt ${choice===k?'sel':''}" data-k="${k}" aria-pressed="${choice===k}"><span class="e">${o[0]}</span>${o[1]}</button>`).join('')}</div><div class="fb" id="fb"></div><div class="row">${sayBtn(d.q+' '+d.opts.map(o=>o[1]).join(', '))}</div>`;
+  const fb=$('fb');
+  const show=()=>{if(choice===null)return; if(d.ok===null){fb.textContent='¡GRACIAS! ES UNA PREDICCIÓN. AHORA LO PROBAMOS.'} else if(choice===d.ok){fb.textContent='✓ ¡SÍ! MUY BIEN.'} else {fb.style.color='var(--ink)';fb.textContent='VAMOS A PENSARLO JUNTOS: LA RESPUESTA ES '+d.opts[d.ok][1].toUpperCase()+'.'}};
+  card.querySelectorAll('[data-k]').forEach(b=>b.onclick=()=>{choice=+b.dataset.k;card.querySelectorAll('[data-k]').forEach(x=>{x.classList.toggle('sel',x===b);x.setAttribute('aria-pressed',x===b)});fb.style.color='';show()});
+  show();
+ } else {
+  const ks=d.sello==='todos'?['ia','regla','no']:(d.sello?[d.sello]:[]);
+  const alt={ia:'Sello: lo hacemos con IA',regla:'Sello: alcanza con una regla',no:'Sello: no lo aceptamos'};
+  card.innerHTML=`<p class="big">${ks.length?(ks.length>1?'¡USAMOS LOS TRES SELLOS!':'EL SELLO DE HOY'):'HOY COMPLETAMOS LA FICHA DEL TALLER'}</p>
+  ${ks.length?`<div class="sellos">${ks.map(k=>`<img src="${SE[k]}" alt="${alt[k]}">`).join('')}</div>`:'<div style="font-size:90px;text-align:center">📝</div>'}
+  <p class="big" style="max-width:none">${d.cierre}</p><div class="row">${sayBtn(d.cierre)}</div>`;
+ }
+ card.querySelectorAll('[data-say]').forEach(b=>b.onclick=()=>say(b.dataset.say));
+ try{history.replaceState(null,'','#s'+d.n)}catch(e){}
+}
+const m=/^#s(\d+)$/.exec(location.hash||'');if(m&&+m[1]>=1&&+m[1]<=D.length){s=+m[1]-1}
+render();
+})();
+</script></html>
